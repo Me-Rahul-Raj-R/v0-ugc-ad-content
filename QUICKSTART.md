@@ -1,143 +1,118 @@
-# Quick Start Guide - UGC Ad Generator
+# 🎬 UGC Ad Content Studio - Quick Start Guide
 
-**Get running in 5 minutes**
+**AI-Powered UGC Ad Creation System with MySQL Workbench Database & Modern React Frontend**
 
 ---
 
-## 📦 Installation
+## 🐬 MySQL Database & Workbench Setup
 
-### 1. Backend Setup
-```bash
-cd backend
-npm install
-cp .env.example .env
-npm run dev
+### Step 1: Verify MySQL is Running
+1. Open **MySQL Workbench**.
+2. Connect to your local instance (Default: `127.0.0.1:3306`, User: `root`).
+3. *(Optional)* You can open and run [`database/schema.sql`](file:///c:/Users/Rahul%20Raj%20R/OneDrive/Documents/Project%20ex/UGC/v0-ugc-ad-content/database/schema.sql) directly in MySQL Workbench, or let the backend automatically create the `ugc_ads_db` database and all tables for you on startup!
+
+### Step 2: Configure Database Credentials
+Edit [`backend/.env`](file:///c:/Users/Rahul%20Raj%20R/OneDrive/Documents/Project%20ex/UGC/v0-ugc-ad-content/backend/.env):
+```env
+PORT=5000
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=your_mysql_password_here
+DB_NAME=ugc_ads_db
 ```
+*(If your MySQL root user has no password, keep `DB_PASSWORD=` empty)*.
 
-### 2. Frontend Setup (new terminal)
+---
+
+## 🚀 Running the Application
+
+### Option A: Run Both Backend & Frontend in One Command (Recommended)
+From the root directory:
 ```bash
-cd frontend
-npm install
 npm start
 ```
 
-### 3. Open Browser
+### Option B: Run in Separate Terminals
+
+**Terminal 1 (Backend):**
+```bash
+cd backend
+npm start
 ```
-http://localhost:3000
+*Backend runs on `http://localhost:5000` and initializes the MySQL database `ugc_ads_db`.*
+
+**Terminal 2 (Frontend):**
+```bash
+cd frontend
+npm start
 ```
+*Frontend opens automatically on `http://localhost:3000`.*
 
 ---
 
-## 🎯 First Steps
+## 🎯 How to Use the Studio
 
-### Step 1: Create Product
-1. Go to "Product Setup" tab
-2. Enter product name: "Hair Growth Serum"
-3. Fill in details
-4. Click "Create Product"
+1. **📦 Product Setup**:
+   - Add your D2C brand details (Name, price, pain points, USPs).
+   - Saved automatically to the `products` table in MySQL.
 
-### Step 2: Generate Hooks
-1. Go to "Hooks" tab
-2. Select hook type: "frustration"
-3. Click "Generate Hooks"
-4. See 15+ variations
+2. **🎣 Viral Hook Generator**:
+   - Pick from 6 psychological frameworks (Frustration, Skeptic Confession, Pattern Interrupt, Curiosity, Transformation, Controversy).
+   - 1-click copy or 1-click save to the `hooks` table in MySQL.
 
-### Step 3: Generate Scripts
-1. Go to "Scripts" tab
-2. Select script type: "30-sec"
-3. Click "Generate Script"
-4. See full script with Hook → Problem → Result → CTA
+3. **📝 Script Studio & Teleprompter**:
+   - Generate structured 5-part video scripts with visual & audio directions.
+   - Click **📺 Open Teleprompter** to rehearse your script with auto-scrolling speed control!
+   - Download as `.md` or save to the `scripts` table in MySQL.
 
-### Step 4: Generate CTAs
-1. Go to "CTAs" tab
-2. Select CTA type: "soft"
-3. Click "Generate CTAs"
-4. See 10 CTA options
+4. **📢 CTA Vault**:
+   - Generate high-converting Soft, Curiosity, Discount, or Direct CTAs.
+   - Saved to the `ctas` table in MySQL.
 
-### Step 5: Export
-1. Go to "Output" tab
-2. Click "Export as JSON" or "Export as Markdown"
-3. Download content pack
+5. **🤖 AI Prompt Matrix**:
+   - Ready-to-use master prompts with dynamic variable injection for ChatGPT-4o, Claude 3.5, and Gemini.
+
+6. **📊 MySQL Campaign Vault**:
+   - View, search, and manage all assets stored in MySQL Workbench.
+   - Export full Campaign Brief as Markdown (`.md`), JSON, or CSV spreadsheet.
 
 ---
 
-## 📡 Key Endpoints
+## 🐬 Verifying in MySQL Workbench
 
-```
-POST   /api/products              Create product
-GET    /api/products              Get all products
-POST   /api/hooks                 Create hook
-GET    /api/hooks/product/:id     Get hooks
-POST   /api/scripts               Create script
-GET    /api/scripts/product/:id   Get scripts
-POST   /api/ctas                  Create CTA
-GET    /api/ctas/product/:id      Get CTAs
-GET    /api/prompts               Get prompt templates
-```
+Run these queries in MySQL Workbench to see your live data:
+```sql
+USE ugc_ads_db;
 
----
+-- View Products
+SELECT * FROM products;
 
-## 🎬 Sample Output
+-- View Saved Viral Hooks
+SELECT * FROM hooks;
 
-### Hook
-> "My hair fall was getting scary"
+-- View UGC Video Scripts
+SELECT * FROM scripts;
 
-### Script
-```
-[HOOK] "My hair fall was getting scary"
-[PROBLEM] "I was tired of losing hair every day"
-[DISCOVERY] "Then I tried this serum for 2-3 weeks"
-[RESULT] "My hair started feeling stronger"
-[CTA] "If hair fall bothers you, check it out"
+-- View Calls to Action
+SELECT * FROM ctas;
 ```
 
-### CTA
-> "Just sharing what helped me"
-
 ---
 
-## 🔧 Troubleshooting
+## 📡 API Endpoints Reference
 
-| Error | Fix |
-|-------|-----|
-| Port 5000 in use | Change PORT in .env |
-| MongoDB error | Install MongoDB or use Atlas |
-| CORS error | Ensure cors() in server.js |
-| Module not found | Run npm install in folder |
-
----
-
-## 📚 Documentation
-
-- **README.md** - Full project overview
-- **docs/prompt-logic.md** - How prompts work
-- **docs/API.md** - All endpoints
-- **docs/SAMPLE-OUTPUTS.md** - Real examples
-- **SUBMISSION.md** - How to submit
-
----
-
-## ⭐ Pro Tips
-
-1. **Save Hooks First** - Generate them, save to DB
-2. **Test Different Hook Types** - See which converts best
-3. **Export Everything** - Keep JSON backups
-4. **Try Multiple Products** - Test system scalability
-5. **Share on Social** - Post your scripts on Instagram
-
----
-
-## 🚀 Next Steps
-
-1. ✅ Get system running
-2. ✅ Create product example
-3. ✅ Generate content
-4. ✅ Export pack
-5. ✅ Share on social media
-6. ✅ Submit to Future Interns
-
----
-
-**That's it! You're ready to generate high-converting UGC ads 🎬**
-
-*Need help? Check docs/ folder or email contact@futureinterns.com*
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/health` | Backend server health status |
+| `GET` | `/api/db-status` | Real-time MySQL connection & statistics |
+| `GET` | `/api/products` | Get all products from MySQL |
+| `POST` | `/api/products` | Create a new product in MySQL |
+| `DELETE` | `/api/products/:id` | Delete product from MySQL |
+| `GET` | `/api/hooks/product/:id` | Get hooks for product from MySQL |
+| `POST` | `/api/hooks` | Save hook to MySQL |
+| `GET` | `/api/scripts/product/:id`| Get scripts for product from MySQL |
+| `POST` | `/api/scripts` | Save script to MySQL |
+| `GET` | `/api/ctas/product/:id` | Get CTAs for product from MySQL |
+| `POST` | `/api/ctas` | Save CTA to MySQL |
+| `GET` | `/api/prompts` | AI Prompt templates |
