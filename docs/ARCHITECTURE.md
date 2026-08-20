@@ -493,39 +493,6 @@ Frontend:
 
 ---
 
-## 🚀 Deployment Architecture
-
-### Local Development
-```
-Frontend: npm start (port 3000)
-Backend: npm run dev (port 5000)
-Database: MongoDB local
-```
-
-### Production (Recommended)
-
-#### Frontend
-```
-Build: npm run build
-Deploy to: Vercel / Netlify
-Environment: Node.js 14+
-```
-
-#### Backend
-```
-Deploy to: Heroku / AWS / DigitalOcean
-Node.js: 14+
-Environment variables: .env (secured)
-```
-
-#### Database
-```
-MongoDB Atlas (cloud)
-Automatic backups
-SSL/TLS encryption
-```
-
----
 
 ## 📋 File Structure Breakdown
 

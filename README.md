@@ -319,26 +319,6 @@ GET    /api/prompts/:id           # Get specific prompt
 
 ---
 
-## 🚢 Deployment
-
-### Deploy Backend to Heroku
-```bash
-# In backend folder
-heroku login
-heroku create your-app-name
-heroku config:set MONGODB_URI=your_mongodb_uri
-git push heroku main
-```
-
-### Deploy Frontend to Vercel
-```bash
-# In frontend folder
-npm install -g vercel
-vercel
-# Update API URL in App.js to production backend
-```
-
----
 
 ## 📞 Support & Contact
 
